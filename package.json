@@ -1,0 +1,50 @@
+{
+  "name": "scrollhub",
+  "version": "0.81.0",
+  "description": "ScrollHub turns any server into a place where people can instantly launch unlimited new (ephemeral) website powered by Scroll.",
+  "main": "server.js",
+  "author": "Breck Yunits",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.33.1",
+    "acme-client": "^5.4.0",
+    "ansi-to-html": "^0.7.2",
+    "cheerio": "^1.0.0-rc.12",
+    "compression": "^1.7.4",
+    "express": "^4.19.2",
+    "express-fileupload": "^1.5.1",
+    "git-http-backend": "^1.1.2",
+    "ky": "^1.4.0",
+    "lodash": "^4.17.21",
+    "minimist": "^1.2.8",
+    "openai": "^4.77.0",
+    "prettier": "^3.3.3",
+    "rss-parser": "^3.13.0",
+    "scroll-cli": "^168.3.0",
+    "scrollsdk": "^100.1.1"
+  },
+  "bin": {
+    "hub": "./cli.js"
+  },
+  "scripts": {
+    "beta": "npm install ~/scroll",
+    "build": "scroll build",
+    "test": " scroll test; node ScrollHub.test.js",
+    "ssh": "ssh root@hub.scroll.pub",
+    "up": "npm install scroll-cli@latest; cp ~/tryscroll/dist/constants.js public/ide/parsers.js; cp ~/tryscroll/dist/libs.js public/ide/libs.js",
+    "deploy": "git push github; git push gitlab; ssh root@hub.scroll.pub 'cd ScrollHub && npm run upgrade'",
+    "upgrade": "git pull && npm install . && npm install -g scroll-cli prettier && npm install -g . && pm2 restart server && npm run build"
+  },
+  "prettier": {
+    "parser": "babel",
+    "useTabs": false,
+    "tabWidth": 2,
+    "semi": false,
+    "printWidth": 240,
+    "trailingComma": "none",
+    "arrowParens": "avoid",
+    "quoteProps": "as-needed"
+  },
+  "devDependencies": {
+    "tap": "^18.7.2"
+  }
+}

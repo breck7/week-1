@@ -1,0 +1,46 @@
+title ScrollHub: The fastest way to publish
+
+linkTitle Readme
+pageHeader.scroll
+
+container 560px
+
+ScrollHub is a super server for publishing websites, scientific articles, blog posts, books, and more.
+
+It is the fastest way to publish. Don't take my word for it, try for yourself here: https://hub.scroll.pub
+
+# Run your own ScrollHub in 60 seconds
+Follow the steps below to run your own ScrollHub server in 60 seconds!
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/MmazCPKmU7c?si=-3_8-5iF0fjKo9-D&amp;clip=UgkxLL9gdK9ebmyJw6tKOerMYRZLBKvJ4M_s&amp;clipt=EMSRHBik5h8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+serverSetup.scroll
+
+Optional steps:
+- Create a DNS A Record pointing from your domain or subdomain to your new server.
+
+# Helpful Dev Environment Aliases
+codeFromFile .bash_aliases.sh
+
+# Wildcard SSL certs
+code
+ sudo certbot certonly --manual --preferred-challenges dns -d example.com -d "*.example.com"
+ dig _acme-challenge.example.com TXT
+
+tor.scroll
+
+# Git Troubleshooting
+
+ScrollHub uses git for versioning files.
+
+If developing locally, occasionally you may run into merge conflicts.
+
+To see the "git status" for a folder visit: https://hub.scroll.pub/status/[folderName]
+
+It is recommended to prevent force pushes on your server with `git config --system receive.denyNonFastForwards true`.
+
+****
+
+ScrollHub is public domain.
+
+footer.scroll

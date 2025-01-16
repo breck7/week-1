@@ -1,0 +1,13 @@
+title Idea Island
+
+settings.scroll
+metaTags
+theme gazette
+header.scroll
+
+center
+* Your ideas deserve the best. Your ideas deserve Scroll.
+ style font-size:200%; center; font-family: Exchange, Georgia, serif; line-height: 120%; padding: 40px;
+
+importForm.scroll
+footer.scroll

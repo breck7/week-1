@@ -1,60 +1,110 @@
-# 🚀 Weekly Hackathon: Week One
+# ScrollHub
 
-This is the official instructions repository for Week One of $hackathon. 
+ScrollHub is a super server for publishing websites, scientific articles, blog posts, books, and more. It provides a fast, efficient way to manage and serve content with built-in version control and real-time editing capabilities.
 
-Your mission is to build the ultimate Frames v2 starter experience.
+[![Version](https://img.shields.io/badge/version-0.60.0-blue.svg)](https://hub.scroll.pub)
 
-## 🎯 Challenge Overview
+## Features
 
-Build a production-ready website + Frame v2 that helps developers start building frames immediately. Your solution should make it as easy as possible for new developers (or even no-code people) to get started with Frames.
+- 🚀 **Instant Publishing**: The fastest way to publish content online
+- 📝 **Universal Content Support**: Publish websites, scientific articles, blog posts, books, and more
+- 🔄 **Built-in Version Control**: Integrated Git support for versioning and collaboration
+- 🎨 **Live Preview**: Real-time editing with instant preview
+- 🛠️ **Multiple File Format Support**: Write in Scroll and Parsers, plus HTML, CSS, JavaScript, and more
+- 📊 **Traffic Analytics**: Built-in live traffic monitoring and visualization
+- 🌐 **Custom Domain Support**: Serve content on your own domain
 
-There should be information about them, practical examples, and good documentation.
+## Quick Start
 
-Take as a starting point the resources that are now on [framesv2.com](https://framesv2.com), but organized in a way that is more compelling to creators. Showcase the power of frames. Bridge the gap between them and people that want to create experiences on the internet.
+Get your own ScrollHub server up and running in 60 seconds:
 
-## 📋 Requirements
+```bash
+apt install -y make zip && git clone https://github.com/tj/n && cd n && make install && n latest && cd && git config --global user.name "ScrollHub" && git config --global user.email "scrollhub@scroll.pub" && git clone https://github.com/breck7/ScrollHub && cd ScrollHub && npm install . && npm install scroll-cli pm2 prettier -g && npm install -g . && git config --global receive.denyCurrentBranch updateInstead && cd && pm2 start ~/ScrollHub/server.js --node-args="--max-old-space-size=4096" --log ~/ScrollHub/pm2.log && pm2 startup && pm2 save
+```
 
-- Production deployed website + Frame v2
-- Mobile friendly
-- Interactive examples + quick-start guide
-- Must use an open source license allowing reuse and modification for any purpose
+Optional: Create a DNS A Record pointing from your domain or subdomain to your new server.
 
-## 📝 Submission Guidelines and Process
+## Development Environment
 
-0. Mint your $hackathon hacker pass via our farcaster frame [here](https://warpcast.com/~/frames/launch?domain=weeklyhackathon.com). If it doesn't work, contact [@jpfraneto.eth](https://warpcast.com/~/inbox/create/16098?text=gm)
-1. Fork this repository (don't just clone it!)
-2. Clone your forked repository and add your code to it
-3. Do your magic. It is recommended to commit your progress often. Eventually we will work towards making all this process done by different AIs that will judge the projects based on the github repo history.
-5. Once ready, create a 88 second piece of media that serves as a pitch of what you create, and that is your formal submission
-6. Along with the piece of media, you can submit ONE production ready link
-7. Submit BOTH here: [https://forms.gle/wHXHXwxfBaag1eUi7](https://forms.gle/wHXHXwxfBaag1eUi7)
+Add these helpful aliases to your `.bash_aliases`:
 
-## 🏆 Judging Criteria
+```bash
+alias gs='git status'
+alias ga='git add'
+alias gc='git commit'
+alias gp='git push'
+```
 
-This is open ended for now. If you have any ideas on how to do this process fair, let us know.
+## Features in Detail
 
-## 💰 Prize Pool
+### Content Management
 
-- All $HACKATHON Clanker fees (>$7k USD)
-- 12-month free access to:
-  - Neynar (https://neynar.com)
-  - Buoy (https://buoy.club)
-  - Orbiter (https://orbiter.host)
-Our 3 hosts for this week.
+- Create and edit content with a powerful built-in editor
+- Real-time preview of changes
+- Support for multiple file formats
+- Automatic formatting for supported file types
 
-## ⏰ Timeline
+### Version Control
 
-Deadline: January 16, 2024, 23:59 UTC.
+- Built-in Git integration
+- View file revision history
+- Compare changes between versions
+- Revert to previous versions
 
-## ❓ Questions?
+### File Operations
 
-- DM [@jpfraneto](https://warpcast.com/~/inbox/create/16098?text=gm) on Warpcast
-- Check the [official challenge page](https://weeklyhackathon.com/week-one)
+- Upload files via drag-and-drop
+- Rename files and folders
+- Create new files from templates
+- Duplicate existing content
+- Delete files and folders with confirmation
 
-## 📜 License
+### Monitoring
 
-Must use an open source license that allows reuse and modification for any purpose.
+- Real-time traffic monitoring
+- Request logging
+- Traffic visualization
+- Download traffic data in multiple formats
+
+## API Routes
+
+ScrollHub provides several API endpoints for managing content:
+
+- `/readFile.htm` - Read file content
+- `/writeFile.htm` - Write file content
+- `/uploadFile.htm` - Upload files
+- `/build.htm` - Build folder content
+- `/format/:folderName` - Format files
+- `/status/:folderName` - Get Git status
+- And many more...
+
+## Technical Details
+
+- Built with Node.js and Express
+- Uses CodeMirror for the editor
+- Integrates with Git for version control
+- Supports multiple parsers and file formats
+- Real-time server-sent events for updates
+- PM2 process management
+
+## Latest Updates
+
+🎉 Version 0.60.0 (12/20/2024)
+
+- Run unlimited ScrollHub processes on one machine
+- Each process independently serves its own root folder
+- Custom port support
+
+See [Release Notes](https://hub.scroll.pub/releaseNotes.html) for full changelog.
+
+## Public Domain
+
+ScrollHub is public domain.
+
+## Try It Online
+
+Visit [https://hub.scroll.pub](https://hub.scroll.pub) to try ScrollHub without installation.
 
 ---
 
-Good luck! 🍀
+For more information, visit the [ScrollHub Documentation](https://hub.scroll.pub).

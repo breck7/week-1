@@ -1,0 +1,71 @@
+<div id="spinner"></div>
+<form method="post" action="createFromPrompt.htm" id="createForm">
+<input type="hidden" name="agent" value="AGENT">
+<input type="hidden" name="template" value="TEMPLATE">
+<input type="hidden" name="tld" value="TLD">
+<input type="hidden" name="welcomeMessage" value="WELCOME_MESSAGE">
+<input type="text" id="folderName" name="prompt" placeholder="Describe the TEMPLATE you want"><button class="scrollButton createButton">Create TEMPLATE</button>
+<div id="errorMessage"></div>
+inlineJs create.js
+</form>
+
+<div id="loadingModal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <div class="spinner"></div>
+    <p>Creating your TEMPLATE...</p>
+    <p>This takes between 30 and 60 seconds.</p>
+    <p>While you wait, say hi on SOCIAL_LINK</p>
+  </div>
+ </div>
+
+
+script
+ {const template = new URLSearchParams(window.location.search).get('template');
+   if (template) {
+     document.querySelector('[name="template"]').value = template;
+     document.querySelector('.createButton').textContent = `Create ${template}`;
+     document.querySelector('#folderName').placeholder = `Describe the ${template} you want`;
+     document.querySelector('.modal-content p').textContent = `Creating your ${template}...`;
+   }
+ }
+
+css
+ .modal {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: rgba(0, 0, 0, 0.5);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+ .modal-content {
+   background: white;
+   color: black;
+   padding: 20px;
+   border-radius: 5px;
+   text-align: center;
+ }
+ .modal-content a {
+   color: #1a2b4d;
+ }
+ .spinner {
+   border: 4px solid #f3f3f3;
+   border-top: 4px solid #3498db;
+   border-radius: 50%;
+   width: 40px;
+   height: 40px;
+   animation: spin 1s linear infinite;
+   margin: 0 auto 10px;
+ }
+ @keyframes spin {
+   0% { transform: rotate(0deg); }
+   100% { transform: rotate(360deg); }
+ }
+script
+ document.getElementById('createForm').onsubmit = function() {
+   document.getElementById('loadingModal').style.display = 'flex';
+   return true;
+ };

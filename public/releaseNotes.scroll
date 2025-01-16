@@ -1,0 +1,315 @@
+buildConcepts releaseNotes.csv releaseNotes.json releaseNotes.tsv
+buildMeasures releaseNotesMeasures.tsv
+title ScrollHub Release Notes
+linkTitle Release Notes
+
+pageHeader.scroll
+## A list of what has changed in ScrollHub releases.
+
+thinColumn
+Download as CSV | TSV | JSON
+ link releaseNotes.csv CSV
+ link releaseNotes.tsv TSV
+ link releaseNotes.json JSON
+
+br
+
+node_modules/scroll-cli/microlangs/changes.parsers
+
+thinColumns 1
+
+📦 0.81.0 1/14/2025
+🎉 support for unlimited wildcard SSLs
+🎉 refactor of AI prompts
+🎉 AI prompt template set via query string
+🎉 AI prompt settings - adjust model and tld and save to local storage
+🎉 upgraded Scroll
+🎉 welcome message improvements
+
+📦 0.80.0 1/13/2025
+🎉 show hidden files toggle
+
+📦 0.79.0 1/13/2025
+🎉 wildcard cert support
+🎉 new /stamp route and command in editor
+🏥 various fixes
+
+📦 0.78.0 1/12/2025
+🎉 better new site landing experience
+🎉 upgrade scroll
+
+📦 0.77.0 1/12/2025
+🎉 eliminated certs folder. Now store certs in their respective folders.
+⚠️ BREAKING: .hub/keys.txt is now .hub/config.scroll
+⚠️ BREAKING: put your root crt/key pair in the .hub folder for root SSL
+⚠️ BREAKING: use the migration script below, otherwise all certs will be regenerated.
+codeWithHeader migrateCerts.sh
+ #!/bin/bash
+ cd /root/.hub/certs
+ # Iterate over all .crt files (we could use .key too, pattern will match pairs)
+ for cert in *.crt; do
+     # Skip if no matches found
+     [[ -f "$cert" ]] || continue
+     # Get the base name without extension (e.g., xiuzhen1.scroll.pub)
+     base="${cert%.crt}"
+     # Copy both cert and key with leading dot
+     cp "$cert" "/root/$base/.$cert"
+     cp "$base.key" "/root/$base/.$base.key"
+ done
+
+📦 0.76.0 1/12/2025
+🎉 add list and kill commands for easier sysadmin
+🎉 various improvements, new prompts, and fixes
+🏥 various fixes
+
+📦 0.75.0 1/7/2025
+🎉 show file history command
+🏥 fix rehighlighting bug with remote imports
+
+📦 0.74.0 1/7/2025
+🎉 various improvements and fixes
+🏥 continue gracefully if errors in loading a scroll doc
+
+📦 0.73.0 1/5/2025
+🎉 various improvements and fixes
+🏥 mobile layout fixes
+
+📦 0.72.0 1/2/2025
+🎉 added writing metrics
+🎉 added file keyboard nav
+🎉 added keyboard shortcut headers
+
+📦 0.71.0 1/2/2025
+🎉 update Scroll
+🎉 ls.csv route
+🎉 ls.json now includes mtimes and filesizes
+
+📦 0.70.0 1/1/2025
+🎉 added dark mode to editor
+
+📦 0.69.0 12/30/2024
+🎉 added welcome message
+🏥 mode fix
+
+📦 0.68.0 12/30/2024
+🎉 added keyboard shortcuts help
+
+📦 0.67.0 12/28/2024
+🎉 added focus mode
+
+📦 0.66.0 12/26/2024
+🎉 Generalized Agent code and added support for deepseek
+
+📦 0.65.0 12/25/2024
+🎉 Stop serving all folders from all custom domains
+🎉 Stop serving non-existant domains
+
+📦 0.64.0 12/25/2024
+🎉 Better AI prompt
+
+📦 0.63.0 12/24/2024
+🎉 Add cron.js support
+
+📦 0.62.0 12/24/2024
+🎉 Moved analytics logging to after response finishes and added response time and status code
+
+📦 0.61.0 12/23/2024
+🎉 Added create via AI. Requires adding your Claude API key to server.
+
+📦 0.60.0 12/20/2024
+🎉 You can now run unlimited ScrollHub processes on one machine-each independently serving their own root folder on their own port.
+
+📦 0.59.0 12/19/2024
+🎉 update scroll for better perf
+🏥 other fixes
+
+📦 0.58.0 12/17/2024
+🎉 update scroll
+🏥 format fixes
+
+📦 0.57.0 12/17/2024
+🎉 format file command
+🎉 many color and style improvements
+🎉 upgrade Scroll and ScrollSDK
+
+📦 0.56.0 12/15/2024
+🎉 many improvements
+🏥 various bug fixes
+
+📦 0.55.0 12/12/2024
+🎉 faster startup via caching folder contents to .stats.json
+🎉 refresh parsers on save
+🏥 various bug fixes
+
+📦 0.54.0 12/06/2024
+🎉 hide external dependencies!
+🎉 hide .log.txt file
+🎉 upgrade Scroll
+
+📦 0.53.1 12/04/2024
+🏥 turn off auto-rehighlighting til we figure it out
+
+📦 0.53.0 12/04/2024
+🎉 upgrade ScrollSDK and Scroll
+🎉 turn Fusion refreshParsers on
+
+📦 0.52.0 12/02/2024
+🏥 nested delete file fix
+
+📦 0.51.0 12/02/2024
+🏥 git fix
+
+📦 0.50.0 12/02/2024
+🎉 cron support: `cron.scroll` files are now run automatically every minute.
+
+📦 0.49.0 11/30/2024
+🎉 updated Scroll and ScrollSDK for Fusion
+
+📦 0.48.0 11/29/2024
+🎉 Fusion http import support
+🎉 updated Scroll and ScrollSDK
+
+📦 0.47.0 11/29/2024
+🎉 updated ScrollSDK and Scroll to get Fusion
+
+📦 0.46.0 11/27/2024
+🎉 added fileList filter
+🏥 various bug fixes
+
+📦 0.45.0 11/23/2024
+🎉 added `set` route
+🎉 upgraded Scroll
+🎉 fixed nested file editing
+
+📦 0.44.0 11/22/2024
+🎉 support mjs script running
+
+📦 0.43.0 11/22/2024
+🎉 update Scroll to get better forms and notices parsers
+🎉 New File API now supports passing params in via query string
+
+📦 0.42.0 11/21/2024
+🎉 update Scroll to get new table date transforms
+
+📦 0.41.0 11/20/2024
+🎉 added New File API
+
+📦 0.40.0 11/20/2024
+🎉 cleanup route names
+
+📦 0.39.0 11/19/2024
+🎉 custom parser support in editor
+
+📦 0.38.0 11/18/2024
+🎉 file list now shows subdirectories
+
+📦 0.37.0 11/18/2024
+🎉 significant write time perf improvements
+
+📦 0.36.0 11/17/2024
+🎉 hub can now serve any/all folders on a machine. will serve whatever cwd is.
+🎉 moved all hub data storage (logs, certs, etc) under new `.hub` folder in `folders` dir.
+🎉 whatever cwd is when you launch hub, that will be the folders dir now.
+⚠️ BREAKING: by default ScrollHub server now serves `~` folder, not `~/folders`. You can update your pm2 job to launch ScrollHub from `~/folders` or move folders from `~/folders` to `~`
+
+📦 0.35.0 11/14/2024
+🎉 updated Scroll
+
+📦 0.34.0 11/13/2024
+🎉 updated Scroll
+
+📦 0.33.0 11/12/2024
+🎉 updated Scroll
+
+📦 0.32.0 11/11/2024
+🎉 updated to Scroll 148
+⚠️ BREAKING: see Scroll release notes for breaks in 148
+ https://scroll.pub/releaseNotes.html Scroll release notes
+
+📦 0.31.0 11/11/2024
+🏥 more open cors
+
+📦 0.30.0 11/11/2024
+🏥 fix script runner by enabling json form parsing
+
+📦 0.29.0 11/11/2024
+🎉 updated scroll
+🎉 pass request body to script runner
+
+📦 0.28.0 11/10/2024
+🏥 temporary cleanup of git issues with templates
+
+📦 0.27.0 11/10/2024
+🎉 new /status/:folderName route to help debugging git sync issues
+
+📦 0.26.0 11/09/2024
+🏥 git fix
+
+📦 0.25.0 11/09/2024
+🎉 add support for php, python, ruby and perl
+
+📦 0.24.0 11/08/2024
+🎉 add syntax highlight support for html, css, and js files
+🏥 dont use scroll mode for non scroll files
+🏥 dont show folders in sidebar for now
+
+📦 0.23.0 11/08/2024
+🎉 show version tracking status of files in sidebar
+🎉 allow all file types
+🎉 add download button
+🎉 folder stats should show # of versioned files, not # of files
+🎉 a scrollhub folder is one not starting with . that contains a git repo
+
+📦 0.22.0 11/07/2024
+🎉 perf for big sites: build saved file immediately, then kick off bigger build jobs
+🎉 perf for big sites: only have at most 1 build job in queue per folder
+
+📦 0.21.0 11/07/2024
+🎉 added new way to create a folder by dropping a zip onto index page
+
+📦 0.20.0 11/07/2024
+🎉 run prettier on save of js, css, and html files if hand edited
+🎉 cleanup of write files
+🏥 fix bugs with trying to git commit an unchanged file after format
+
+📦 0.19.0 11/06/2024
+🎉 shift+click to rename a file
+🏥 restore normal browser behavior on command click or right click
+
+📦 0.18.0 11/05/2024
+🎉 easier/faster renames and file opens
+
+📦 0.17.0 11/05/2024
+🎉 add ScrollHub version number to folders.html page and log to console on start
+🏥 error message improvements
+
+📦 0.16.0 11/04/2024
+🏥 bug fixes
+
+📦 0.15.0 11/03/2024
+🎉 introduced "buffer" param to editor to allow for creating new files from templates
+🎉 refactored editor
+
+📦 0.14.0 11/03/2024
+🎉 many fixes and improvements
+
+📦 0.13.0 10/25/2024
+🎉 the template release
+
+📦 0.12.0 10/24/2024
+🎉 one click clones
+
+📦 0.11.0 10/24/2024
+🎉 added folder renaming
+🎉 various improvements
+
+📦 0.10.0 10/23/2024
+🎉 significant bug fixes and improvements
+
+📦 0.8.0 10/18/2024
+🎉 refactored code into ScrollHub class and started automated tests
+🎉 refactored templates and creation
+
+endColumns
+
+footer.scroll
